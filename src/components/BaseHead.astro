@@ -15,6 +15,9 @@ const {
 const pageTitle = title;
 const pageDescription = description;
 const pagePermalink = permalink;
+
+import { join } from "node:path";
+import { AstroFont } from "astro-font";
 ---
 <head>
 	<!-- Global Metadata -->
@@ -48,7 +51,43 @@ const pagePermalink = permalink;
 	<meta property="twitter:image" content={featuredimage} />
 
 	<!-- Fonts -->
-	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<AstroFont
+		config={[
+			{
+				name: "Roboto",
+				src: [
+					{
+						style: 'normal',
+						weight: '400',
+						path: join(process.cwd(), 'public', 'assets', 'fonts', 'Roboto-Regular.ttf')
+					},
+				],
+				preload: false,
+				display: "swap",
+				fallback: "sans-serif",
+				cssVariable: "font-content",
+			},
+			{
+				name: "MeutasSoft",
+				src: [
+					{
+						style: 'normal',
+						weight: '700',
+						path: join(process.cwd(), 'public', 'assets', 'fonts', 'MeutasSoft-Bold.otf')
+					},
+					{
+						style: 'normal',
+						weight: '900',
+						path: join(process.cwd(), 'public', 'assets', 'fonts', 'MeutasSoft-Black.otf')
+					},
+				],
+				preload: false,
+				display: "swap",
+				fallback: "sans-serif",
+				cssVariable: "font-header",
+			},
+		]}
+	/>
 
 	<!-- Fathom - beautiful, simple website analytics -->
 		<script src="https://cdn.usefathom.com/script.js" data-site="GKITFKWR" defer></script>
