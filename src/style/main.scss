@@ -1,28 +1,28 @@
 @charset "utf-8";
 
-@font-face {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 400;
-  src: url("/assets/fonts/Roboto-Regular.ttf") format("opentype");
-  font-display: swap;
-}
+// @font-face {
+//   font-family: Roboto;
+//   font-style: normal;
+//   font-weight: 400;
+//   src: url("/assets/fonts/Roboto-Regular.ttf") format("opentype");
+//   font-display: swap;
+// }
 
-@font-face {
-  font-family: MeutasSoft;
-  font-style: normal;
-  font-weight: 700;
-  src: url("/assets/fonts/MeutasSoft-Bold.otf") format("opentype");
-  font-display: swap;
-}
+// @font-face {
+//   font-family: MeutasSoft;
+//   font-style: normal;
+//   font-weight: 700;
+//   src: url("/assets/fonts/MeutasSoft-Bold.otf") format("opentype");
+//   font-display: swap;
+// }
 
-@font-face {
-  font-family: MeutasSoft;
-  font-style: normal;
-  font-weight: 900;
-  src: url("/assets/fonts/MeutasSoft-Black.otf") format("opentype");
-  font-display: swap;
-}
+// @font-face {
+//   font-family: MeutasSoft;
+//   font-style: normal;
+//   font-weight: 900;
+//   src: url("/assets/fonts/MeutasSoft-Black.otf") format("opentype");
+//   font-display: swap;
+// }
 
 @import "../../node_modules/open-props/open-props.min.css";
 @import "../../node_modules/open-props/colors-hsl.min.css";
