@@ -1,7 +1,7 @@
 ---
 title: 'Setting up the Vercel Toolbar for frontend Vite projects: a rant'
 pubDate: 2025-09-24T19:35:58.236Z
-updatedDate: 2025-09-27T21:12:58.128Z
+updatedDate: 2025-09-27T22:34:37.091Z
 description: A frontend-only solution to a Vercel-specific problem
 draft: true
 ---
@@ -44,6 +44,42 @@ Fed up once again with trying to find a solution, I gave GitHub CoPilot another 
 
 ### Vite's plugin system and `configureServer`
 
-Vite is a deceptively powerful platform to build on. Most developers may ever use it to simply whip up a foundation for a Vue, Astro, or React application and call it a day. That's all well and good, but there's some magic in its inner workings that deserve deeper exploration. That previously-mentioned prompt revealed to me one such magical API of its plugin system when it produced a solution to my toolbar woes: [configureServer](https://vite.dev/guide/api-plugin.html#configureserver).
+Vite is a deceptively powerful platform to build on. Most developers may ever use it to simply whip up a foundation for a Vue, Astro, or React application and call it a day. That's all well and good, but there's some magic in its inner workings that deserve deeper exploration. That previously-mentioned prompt revealed to me one such magical API of its plugin system when it produced a solution to my toolbar woes.
 
-For the uninitiated, Vite's plugin system, built on the shoulders of [Rollup](https://rollupjs.org/), exposes a bunch of hooks and options to help make working with various JavaScript and TypeScript frameworks and libraries easier. The [ecosystem](https://github.com/vitejs/awesome-vite#plugins) runs deep. One of the hooks these plugins can take advantage of is the Vite-specific configureServer hook, which grants access
+For the uninitiated, Vite's plugin system, built on the shoulders of [Rollup](https://rollupjs.org/), exposes a bunch of hooks and options to help make working with various JavaScript and TypeScript frameworks and libraries easier. The [ecosystem](https://github.com/vitejs/awesome-vite#plugins) runs deep. One of the hooks these plugins can take advantage of is the Vite-specific [configureServer](https://vite.dev/guide/api-plugin.html#configureserver) hook, which grants access to the development server's internal workings. This is great for adding custom middleware that can run either before or after Vite's internal middleware, and it's exactly where CoPilot hooked into two functions needed to set up flags locally.
+
+```typescript
+// vite-plugin-flags.ts
+
+//...
+export function flagsPlugin(): Plugin {
+  return {
+    name: 'flags-dev-server',
+    configureServer(server) {
+      server.middlewares.use('/.well-known/vercel/flags', async (_req, res) => {
+        try {
+          // ...
+        } catch (error) {
+          console.error('Error handling flags discovery:', error);
+          res.statusCode = 500;
+          res.end('Internal Server Error');
+        }
+      });
+
+      server.middlewares.use('/api/flag-values', async (req, res) => {
+        try {
+          // ...
+        } catch (error) {
+          console.error('Error handling flag values:', error);
+          res.statusCode = 500;
+          res.end('Internal Server Error');
+        }
+      });
+    },
+  };
+}
+```
+
+This was the piece I'd been missing. It enabled the solution that my senior engineer handed me, which already worked in Vercel's preview environments, to work locally without having to spin up another server. Now, instead of having to plug in values in Chrome DevTools or markup, I can simply click on the toolbar in my local development environment, flip some switches, and write code. Hot module replacement doesn't break the experience, either. Plus, said flipping of switches makes demos easier as well, and now that I have it integrated with both local development and Vercel's previews, I can just share a link to product managers to show them my handiwork. 
+
+So, is this how everyone with a Vite project should handle this? No, probably not. I'd wager most teams using Vercel have already reached for a meta-framework that can support APIs. Still, I can see this being useful for developers mocking up web applications, A/B testing designs for executives, or teams building design systems and components with a lightweight setup. While I'm still ironing out some kinks in my own project, I've create a gist with some basic instructions on how to get started for anyone else in a similar pickle who may want to add it to theirs. If you have any questions, leave a comment and I'll see if I can help.
