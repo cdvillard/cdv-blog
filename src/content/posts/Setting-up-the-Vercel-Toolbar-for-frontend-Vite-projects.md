@@ -1,7 +1,7 @@
 ---
 title: 'Setting up the Vercel Toolbar for frontend Vite projects: a rant'
 pubDate: 2025-09-24T19:35:58.236Z
-updatedDate: 2025-09-27T03:04:54.789Z
+updatedDate: 2025-09-27T21:12:58.128Z
 description: A frontend-only solution to a Vercel-specific problem
 draft: true
 ---
@@ -22,22 +22,28 @@ Over time, the interweaving controls have grown too complex for us to manage man
 
 ## The final straw
 
-A colleague of mine finally got fed up with the tedium and requested I finally add the [Vercel Toolbar](https://vercel.com/docs/vercel-toolbar) to the damn project, specifically the [Flags Explorer](https://vercel.com/docs/feature-flags/flags-explorer) feature. You could fit so many variables and conditions in this thing, and more than just feature flags too, which was only half of my problem. With all the various enumerated values, platforms, and environments I had to support, it only made sense to add this to our local and preview environments. He through a best-faith attempt into a branch with some LLM assistance and passed it over to me to take it to the finish line. 
+A colleague of mine finally got fed up with the tedium and requested I finally add the [Vercel Toolbar](https://vercel.com/docs/vercel-toolbar) to the damn project, specifically the [Flags Explorer](https://vercel.com/docs/feature-flags/flags-explorer) feature. You could fit so many variables and conditions in this thing, and more than just feature flags too, which was only half of my problem. With all the various enumerated values, platforms, and environments I had to support, it only made sense to add this to our local and preview environments. He through a best-faith attempt into a branch with some LLM assistance and passed it over to me to take it to the finish line.
 
-gave it my best shot empathized with his frustrations, so . Even with some assistance from GitHub CoPilot, I couldn't get t.
+Empathizing with his frustrations, I gave it another shot. I'd tried in the past, but even with some assistance from GitHub CoPilot, I couldn't get it to stick. The issue never was enabling the Vercel Toolbar itself. Their documentation in that regard was, for the most part, usable. The trouble really came when trying to enable Flags Explorer, which requires an API call be present for local development.
 
-The issue never was enabling the Vercel Toolbar itself. Their documentation in that regard was, for the most part, usable. The trouble really came when trying to enable Flags Explorer, which requires an API call be present for local development.
-
-You know what? I can't let this slide. I need to take a few words to call out something about Vercel's documentation.
+You know what? I have to call something out. I need to write a few words about Vercel's documentation.
 
 ### Vercel's documentation loop
 
-Vercel's documentation focuses on frameworks for which it offers first-class support. That's fair, but many of their users still use Vite. They know this. So why is the only documentation acknowledging Vite projects stuck as a footnote under the instructions for "other frameworks?"
+Vercel's documentation focuses on frameworks for which it offers first-class support. That much is fair, but many of their users do use Vite. They know this. So why is the only documentation acknowledging Vite projects stuck as a footnote under the instructions for "other frameworks?"
 
 ![](</Screenshot 2025-09-26 at 10.40.47 AM.png>)
 
-I am under no illusion that Vite single-handedly runs all JavaScript-based projects the world round, but it's certainly a large enough contingent to warrant a bit more obvious documentation. If someone new to front-end development looked at the suggested SvelteKit documentation, what are the chances they'd still be stuck because they're unaware of what the web standards equivalent of onMount are? If your answer is anything greater than zero, that should be a sign this needs improvement.
+I am under no illusion that Vite somehow single-handedly runs all JavaScript-based projects the world round, but it's certainly a large enough contingent to warrant a bit more obvious documentation. If a new frontend developer looked at the suggested SvelteKit documentation, what are the chances they'll know what the web standards equivalent of `onMount` are? If you suggest anything greater than zero, that should be a sign this needs improvement.
 
-## The Flags Explorer
+## Flags Explorer
 
-My gripes with Vercel's documentation aside, the toolbar's [Flags Explorer](https://vercel.com/docs/feature-flags/flags-explorer) feature is what I was after.  
+The [non-framework instructions for the Flags Explorer](https://vercel.com/docs/feature-flags/flags-explorer/getting-started#:~:text=for%20SvelteKit.-,Using%20a%20custom%20setup,-Learn%20how%20to) are no better, but my gripes with Vercel's documentation aside that was what I was after. One of the immediate points of contention for a frontend-only project like mine was the hard requirement of an API endpoint that returns the flags configuration, like `./.well-known/vercel/flags`. This was what stopped me implementing the Flags Explorer before, not because I couldn't add a Hono or Express server to my project and call it a day, but because it felt unnecessary. There had to be a simpler way to do this within the confines of my simple development project.
+
+Fed up once again with trying to find a solution, I gave GitHub CoPilot another chance. With a prompt and a link to [Vercel's Flags Explorer reference docs](https://vercel.com/docs/feature-flags/flags-explorer/reference), I asked it to come up for the endpoint for me. Lo, and behold, it did just that.
+
+### Vite's plugin system and `configureServer`
+
+Vite is a deceptively powerful platform to build on. Most developers may ever use it to simply whip up a foundation for a Vue, Astro, or React application and call it a day. That's all well and good, but there's some magic in its inner workings that deserve deeper exploration. That previously-mentioned prompt revealed to me one such magical API of its plugin system when it produced a solution to my toolbar woes: [configureServer](https://vite.dev/guide/api-plugin.html#configureserver).
+
+For the uninitiated, Vite's plugin system, built on the shoulders of [Rollup](https://rollupjs.org/), exposes a bunch of hooks and options to help make working with various JavaScript and TypeScript frameworks and libraries easier. The [ecosystem](https://github.com/vitejs/awesome-vite#plugins) runs deep. One of the hooks these plugins can take advantage of is the Vite-specific configureServer hook, which grants access
