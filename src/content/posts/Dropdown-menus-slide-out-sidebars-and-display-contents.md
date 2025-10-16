@@ -1,22 +1,26 @@
 ---
 title: 'A rabbit hole into dropdown menus and `display: contents`'
 pubDate: 2025-10-16T05:35:10.693Z
-updatedDate: 2025-10-16T13:47:25.455Z
+updatedDate: 2025-10-16T14:11:54.605Z
 description: What new interesting patterns we can weave
 draft: true
 ---
 
-Dropdown menus are funny things. A stalwart UX holdover from the days of the [Apple Lisa,](https://kartsci.org/kocomu/computer-history/graphical-user-interface-history/#:~:text=Apple%20Lisa%20and%20the%20Mac,double%2Dclicked%20on%20that%20file.) dropdown menus are everywhere on the internet, in all shapes and sizes. They can contain more than just lists of links, though they're usually used on the web to show options or navigation. They're also typically pretty flat in their informational topography.\
+Dropdown menus are funny things. Spend any significant amount of time on the internet, and you'll find at least one out there waiting to pop open at a moment's notice, you mark my words. 
+
+A stalwart UX holdover from the days of the [Apple Lisa,](https://kartsci.org/kocomu/computer-history/graphical-user-interface-history/#:~:text=Apple%20Lisa%20and%20the%20Mac,double%2Dclicked%20on%20that%20file.) dropdown menus are everywhere on the internet, in [all shapes and sizes](https://www.interaction-design.org/literature/article/display-contents-the-classic-way-with-dropdown-menus?srsltid=AfmBOopbZE9WdhT5O5-YysSWPpHgE7f2XgNYy9Kt-EX0kNwcOQRria0N). They can contain more than just lists of links, though they're usually used on the web to show options or navigation. They're also typically pretty flat in their informational topography.\
 \
-Many times, they're pretty simple only covering one level of content. This one from the TinaCMS editor I'm using is a pretty good example.
+Many times, they're only covering one level of content. This one from the Tina CMS editor I'm using is a good example.
 
 ![](</Screenshot 2025-10-16 at 9.37.22 AM.png>)
 
-Some times, you'll see them render everything in a giant, page-spanning box, called "mega dropdowns" or "[mega menus](https://webflow.com/blog/mega-menu-examples)." These might have content that goes two levels deep. Webflow's primary navigation has a great example. Click on the "Solutions" link, and a huge dropdown slides out revealing three distinct lists of links.
+Sometimes, you'll see them render everything in a giant, page-spanning box, called "mega dropdowns" or "[mega menus](https://webflow.com/blog/mega-menu-examples)." These might have content that goes two levels deep. Webflow's primary navigation has a great example. Click on the "Solutions" link, and a huge dropdown slides out revealing three distinct lists of links.
 
 ![](</Screenshot 2025-10-16 at 1.33.13 AM.png>)
 
- with sections under their Solutions or they'll hang off another menu Spend any significant amount of time on the internet, and you'll find at least one out there waiting to pop open at a moment's notice, you mark my words. 
+Funny enough, as I was collecting screenshots for this post, I couldn't find a production example of a specific specimen of dropdown menu I feel most people might associate with this pattern, the multilevel dropdown menu. It seems the trend is either a small menu, or a large blocky one. UXPin has a solid example of the [nested dropdown](https://www.uxpin.com/examples/multilevel-dropdown-navigation) I'm talking about.
+
+![](</Screenshot 2025-10-16 at 10.01.41 AM.png>)
 
 Two of the first things web developers learn about HTML and CSS are the Document Object Model and the Box Model. In a way, both concepts let developers think about the web as a bunch of nested containers. HTML lets us wrap content in tags to build a DOM tree to generate boxes, and CSS lets us figure out how we're going to arrange those boxes on the page.
 
