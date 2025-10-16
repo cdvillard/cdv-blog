@@ -1,16 +1,25 @@
 ---
-title: 'Dropdown menus, slide-out sidebars, and `display: contents`'
+title: 'A rabbit hole into dropdown menus and `display: contents`'
 pubDate: 2025-10-16T05:35:10.693Z
-description: What weird patterns we may weave
+updatedDate: 2025-10-16T06:24:12.510Z
+description: What new interesting patterns we can weave
 draft: true
 ---
 
-Dropdown menus are everywhere. Spend any significant amount of time online, and you'll be pressed to not run into some form of dropdown menu. They can take [all kinds of forms](https://www.interaction-design.org/literature/article/display-contents-the-classic-way-with-dropdown-menus), and they're out there waiting to pop out at a moment's notice, you mark my words.
+Two of the first things web developers learn about HTML and CSS are the Document Object Model and the Box Model. In a way, both concepts let us developers think about the web as a bunch of nested containers. HTML lets us wrap content in tags to build a DOM tree, and CSS lets us figure out where how the content in those tags get arranged.
 
-I had a chance to think deeply about them recently when asked to develop a dropdown menu with submenus. The catch? The design dictated that the submenus, when opened, had to influence its parent container. This sounds simple.\
-\
-No. No, if you know anything about the [Document Object Model](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model), you should know why it was not.\
-\
+That makes reasoning over the layout of content easy if it can just flow down the page, but the DOM and Box Model effectively teach us that content nested in container can't really come out of its container. That's made more dynamic layout difficult until more recent innovations like CSS Flexbox and Grid.
+
+Dropdown menus are a great example of this conundrum. They can take [all kinds of forms](https://www.interaction-design.org/literature/article/display-contents-the-classic-way-with-dropdown-menus), and they're out there waiting to pop out at a moment's notice, you mark my words. 
+
+Usually, when you see a dropdown menu in action, it's either one-dimensional or it contains a submenu that hangs off its side using absolute positioning. That's because, if written in semantic HTML, the submenu is typically nested in a `li` element of an unordered list. 
+
+![](</Screenshot 2025-10-16 at 2.10.32 AM.png>)
+
+I had a chance to think deeply about them recently when asked to develop a dropdown menu with submenus. The catch? The design dictated that the submenus, when opened, had to influence its parent container. This sounds simple.
+
+No. No, if you know anything about the [Document Object Model](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model), you should know why it was not.
+
 The rabbit hole this project sent me down took me through semantic HTML, accessibility, and CSS. Enough so that I had to document it for anyone else who may need some guidance when asked to work with nested elements rendering next to their parents.
 
 ## The thing with dropdowns and the DOM
