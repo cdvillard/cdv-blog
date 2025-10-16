@@ -1,71 +1,42 @@
 ---
 title: 'A rabbit hole into dropdown menus and `display: contents`'
 pubDate: 2025-10-16T05:35:10.693Z
-updatedDate: 2025-10-16T14:11:54.605Z
+updatedDate: 2025-10-16T15:05:33.633Z
 description: What new interesting patterns we can weave
 draft: true
 ---
 
-Dropdown menus are funny things. Spend any significant amount of time on the internet, and you'll find at least one out there waiting to pop open at a moment's notice, you mark my words. 
+Dropdown menus are funny things. Spend any time online, and you'll find at least one out there waiting to pop open, you mark my words. 
 
-A stalwart UX holdover from the days of the [Apple Lisa,](https://kartsci.org/kocomu/computer-history/graphical-user-interface-history/#:~:text=Apple%20Lisa%20and%20the%20Mac,double%2Dclicked%20on%20that%20file.) dropdown menus are everywhere on the internet, in [all shapes and sizes](https://www.interaction-design.org/literature/article/display-contents-the-classic-way-with-dropdown-menus?srsltid=AfmBOopbZE9WdhT5O5-YysSWPpHgE7f2XgNYy9Kt-EX0kNwcOQRria0N). They can contain more than just lists of links, though they're usually used on the web to show options or navigation. They're also typically pretty flat in their informational topography.\
-\
-Many times, they're only covering one level of content. This one from the Tina CMS editor I'm using is a good example.
+A stalwart UX holdover from the days of the [Apple Lisa,](https://kartsci.org/kocomu/computer-history/graphical-user-interface-history/#:~:text=Apple%20Lisa%20and%20the%20Mac,double%2Dclicked%20on%20that%20file.) dropdown menus are everywhere on the internet, in [all shapes and sizes](https://www.interaction-design.org/literature/article/display-contents-the-classic-way-with-dropdown-menus?srsltid=AfmBOopbZE9WdhT5O5-YysSWPpHgE7f2XgNYy9Kt-EX0kNwcOQRria0N). Many times, they're only covering one level of content. This one from the Tina CMS editor I'm using is a good example.
 
 ![](</Screenshot 2025-10-16 at 9.37.22 AM.png>)
 
-Sometimes, you'll see them render everything in a giant, page-spanning box, called "mega dropdowns" or "[mega menus](https://webflow.com/blog/mega-menu-examples)." These might have content that goes two levels deep. Webflow's primary navigation has a great example. Click on the "Solutions" link, and a huge dropdown slides out revealing three distinct lists of links.
+Sometimes, you'll see "mega dropdowns" or "[mega menus](https://webflow.com/blog/mega-menu-examples)" that go a level or two level deep like the one on Webflow's marketing site.
 
 ![](</Screenshot 2025-10-16 at 1.33.13 AM.png>)
 
-Funny enough, as I was collecting screenshots for this post, I couldn't find a production example of a specific specimen of dropdown menu I feel most people might associate with this pattern, the multilevel dropdown menu. It seems the trend is either a small menu, or a large blocky one. UXPin has a solid example of the [nested dropdown](https://www.uxpin.com/examples/multilevel-dropdown-navigation) I'm talking about.
+Funny enough, while collecting screenshots for this post, I couldn't find production examples of what I usually associate with dropdown menus, the multilevel dropdown menu. They seem to have gone out of fashion. UXPin has a [solid example](https://www.uxpin.com/examples/multilevel-dropdown-navigation) of what I'm talking about.
 
 ![](</Screenshot 2025-10-16 at 10.01.41 AM.png>)
 
-Two of the first things web developers learn about HTML and CSS are the Document Object Model and the Box Model. In a way, both concepts let developers think about the web as a bunch of nested containers. HTML lets us wrap content in tags to build a DOM tree to generate boxes, and CSS lets us figure out how we're going to arrange those boxes on the page.
+It was a version of that latter dropdown menu my team and I were recently asked to develop, just a top-level list of links, some of which were associated with a secondary list of links. Even in just writing this, we can see there's plenty of prior art to borrow from. Right?
 
-Together, the DOM and Box Model make reasoning over content layout easy enough if it can just flow down the page. Not so much if we want to make something dynamic. Historically, both concepts effectively teach developers that content nested in containing elements can't break out of its container. 
+Quoting the late, great John Pinette, I say, "Nay nay!" There was a twist to this multilevel dropdown. Not only did it have to render submenus, but its container had to grow and shrink depending on the size of the submenu that was rendered! 👻
 
-This has made developing dynamic layouts a chore until more recent innovations like CSS Flexbox and Grid gained wider adoption, but they too are still subject to the 
+Fine, it's not exactly spooky, unless you know why HTML and CSS don't exactly make this simple. This task took me down a rabbit hole of semantic HTML, keyboard interaction, and accessibility that I thought only prudent to share, seeing as I couldn't find any examples for it myself. Let's dive in.
 
-Dropdown menus are a great example of this conundrum, a holdover from the days when. 
+## Back to boxy basics
 
-They can take all [kinds](https://www.interaction-design.org/literature/article/display-contents-the-classic-way-with-dropdown-menus) of forms, but dropdown menus are typically pretty flat as far as the DOM tree is concerned. one-dimensional or it contains a submenu that hangs off its side using absolute positioning. That's because, if written in semantic HTML, the submenu is typically nested in a `li` element of an unordered list.
+Two of the first things web developers learn about HTML and CSS are the Document Object Model and the Box Model. In a way, both concepts let developers think about the web as a bunch of nested containers. HTML lets us generate boxes by wrapping tags in tags to build a DOM tree, and CSS lets us figure out how we're going to arrange those boxes on the page.
 
-![](</Screenshot 2025-10-16 at 2.10.32 AM.png>)
+Together, the DOM and Box Model make reasoning over content layout easy enough if it can just flow down the page. Not so much if we want to make something dynamic. Both concepts effectively teach developers that content nested in containing elements can't break out of its containers. 
 
-I had a chance to think deeply about them recently when asked to develop a dropdown menu with submenus. The catch? The design dictated that the submenus, when opened, had to influence its parent container. This sounds simple.
-
-No. No, if you know anything about the [Document Object Model](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model), you should know why it was not.
-
-The rabbit hole this project sent me down took me through semantic HTML, accessibility, and CSS. Enough so that I had to document it for anyone else who may need some guidance when asked to work with nested elements rendering next to their parents.
+This has made developing dynamic layouts a chore. Developers have reached for everything from spacer images and HTML tables to manipulating pseudo-elements and CSS positioning to make anything remotely dynamic work. It wasn't until more recent innovations like CSS Flexbox and Grid gained wider adoption that layouts became easier, but those are still subject to the whims of the DOM and the Box Model.
 
 ## The thing with dropdowns and the DOM
 
-If you don't work in HTML regularly, you're forgiven for not considering the markup of a typical dropdown menu. Dropdown menus are basically lists of links. A common pattern to render them would use a `nav` navigation element, wrapped around an `ul` unordered list, which itself wraps a bunch of `li` list elements containing `a` link anchors.
-
-```html
-<nav>
-  <ul>
-    <li>
-      <a href="#">Company</a>
-    </li>
-    <li>
-      <a href="#">Services</a>
-    </li>
-    <li>
-      <a href="#">Shop</a>
-    </li>
-    <li>
-      <a href="#">Contact</a>
-    </li>
-  </ul>
-</nav>
-```
-
-Those li list elements can technically contain anything. That's why we see some really interesting and informative dropdown menus with visualizations and realtime data.
-
-Sometimes, one level of items isn't enough. A dropdown menu might need to show what each section of a website offers. In that case, another ul element would get nested in the li elements that need extra links.
+Multilevel dropdown menus are a great example of this conundrum. A semantic HTML pattern to render them might use a `nav` navigation element, wrapped around an `ul` unordered list, which itself wraps a bunch of `li` list elements containing `a` link elements. If one of the top-level links has a submenu, semantic HTML requires another container be nested in the `li` element containing that link. 
 
 ```html
 <nav>
@@ -110,4 +81,8 @@ Sometimes, one level of items isn't enough. A dropdown menu might need to show w
 </nav>
 ```
 
-This is a trivial example, but imagine being an enterprise or major news outlet with hundreds of links. This isn't tenable, so you'll likely try and hide man
+Typically, this will render as nested lists, but in a multilevel dropdown menu, you might to hide the submenu `ul` elements and only render them when their top-level link is interacted with. It's not uncommon to see them render to the side using [absolute positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/position#absolute).
+
+![](</Screenshot 2025-10-16 at 2.10.32 AM.png>)
+
+Notice how when that submenu does render, the container of the main list doesn't change its size. That's because CSS positioning effectively pulls the element its affecting out of the flow of the HTML document. That element can then positioned on its own plane on top of the rest of the document, relative to its container or the document itself.
