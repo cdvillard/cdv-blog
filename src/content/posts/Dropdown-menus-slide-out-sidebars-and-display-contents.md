@@ -1,7 +1,7 @@
 ---
 title: 'A rabbit hole into dropdown menus and `display: contents`'
 pubDate: 2025-10-16T05:35:10.693Z
-updatedDate: 2025-10-16T13:38:52.862Z
+updatedDate: 2025-10-16T13:39:07.040Z
 description: What new interesting patterns we can weave
 draft: true
 ---
