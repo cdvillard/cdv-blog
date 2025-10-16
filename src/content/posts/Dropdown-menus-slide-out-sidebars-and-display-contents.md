@@ -1,7 +1,7 @@
 ---
 title: 'A rabbit hole into dropdown menus and `display: contents`'
 pubDate: 2025-10-16T05:35:10.693Z
-updatedDate: 2025-10-16T13:39:07.040Z
+updatedDate: 2025-10-16T13:47:25.455Z
 description: What new interesting patterns we can weave
 draft: true
 ---
@@ -12,7 +12,11 @@ Many times, they're pretty simple only covering one level of content. This one f
 
 ![](</Screenshot 2025-10-16 at 9.37.22 AM.png>)
 
-, you'll see them either render everything in a giant, page-spanning box; or they'll hang off another menu Spend any significant amount of time on the internet, and you'll find at least one out there waiting to pop open at a moment's notice, you mark my words. 
+Some times, you'll see them render everything in a giant, page-spanning box, called "mega dropdowns" or "[mega menus](https://webflow.com/blog/mega-menu-examples)." These might have content that goes two levels deep. Webflow's primary navigation has a great example. Click on the "Solutions" link, and a huge dropdown slides out revealing three distinct lists of links.
+
+![](</Screenshot 2025-10-16 at 1.33.13 AM.png>)
+
+ with sections under their Solutions or they'll hang off another menu Spend any significant amount of time on the internet, and you'll find at least one out there waiting to pop open at a moment's notice, you mark my words. 
 
 Two of the first things web developers learn about HTML and CSS are the Document Object Model and the Box Model. In a way, both concepts let developers think about the web as a bunch of nested containers. HTML lets us wrap content in tags to build a DOM tree to generate boxes, and CSS lets us figure out how we're going to arrange those boxes on the page.
 
