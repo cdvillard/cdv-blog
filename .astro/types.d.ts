@@ -304,6 +304,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
+"VueConfUS-2025-Recap.md": {
+	id: "VueConfUS-2025-Recap.md";
+  slug: "vueconfus-2025-recap";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
 "What-environments-social-media-can-create.md": {
 	id: "What-environments-social-media-can-create.md";
   slug: "what-environments-social-media-can-create";
@@ -330,9 +337,7 @@ declare module 'astro:content' {
 	};
 
 	type DataEntryMap = {
-		"slides": {
-};
-
+		
 	};
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
