@@ -1,7 +1,7 @@
 ---
 title: Ready for new opportunities
 pubDate: 2025-10-18T01:46:47.558Z
-updatedDate: 2025-11-16T21:45:40.473Z
+updatedDate: 2025-11-16T21:48:13.297Z
 description: I'm available for hire.
 featuredImage: >-
   https://assets.tina.io/ccae3147-013b-4061-9b12-b6b5c70dc307/bafkreibfvvc7qrvfbusgmzz2geee46w3fhu257hap2xp3hv7wcvgrf4k5a.jpg
@@ -13,4 +13,4 @@ draft: true
 
 ## Ready for something new
 
-I'm currently available for new opportunities in the web development space!
+I'm currently available for new opportunities in the web development space! And to help hiring managers and recruiters learn a bit more about me and what I'm looking for in a role, I thought I'd write about not just what I've done, but what I'm looking for in a new role. This will likely become a living document that I'll keep 
