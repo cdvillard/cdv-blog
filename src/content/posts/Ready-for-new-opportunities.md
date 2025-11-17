@@ -1,12 +1,13 @@
 ---
 title: Ready for new opportunities
 pubDate: 2025-11-17T22:15:16.365Z
-updatedDate: 2025-11-17T22:32:26.302Z
+updatedDate: 2025-11-17T22:34:56.430Z
 description: >-
   Now that I'm available for full-time work, this is what I'm looking for in a
   role.
 featuredImage: >-
   https://assets.tina.io/ccae3147-013b-4061-9b12-b6b5c70dc307/bafkreibfvvc7qrvfbusgmzz2geee46w3fhu257hap2xp3hv7wcvgrf4k5a.jpg
+draft: true
 ---
 
 I'm currently on the market looking for a new full-time software engineering role! What follows is a bit about myself and what I'm looking for in my next position.
