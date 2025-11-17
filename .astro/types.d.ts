@@ -241,6 +241,20 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
+"A-warning-about-Upwork.md": {
+	id: "A-warning-about-Upwork.md";
+  slug: "a-warning-about-upwork";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
+"Always-ready.md": {
+	id: "Always-ready.md";
+  slug: "always-ready";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
 "By-the-46th-episode.md": {
 	id: "By-the-46th-episode.md";
   slug: "by-the-46th-episode";
@@ -258,6 +272,13 @@ declare module 'astro:content' {
 "DRAFT---Sludge.md": {
 	id: "DRAFT---Sludge.md";
   slug: "draft---sludge";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
+"Dropdown-menus-slide-out-sidebars-and-display-contents.md": {
+	id: "Dropdown-menus-slide-out-sidebars-and-display-contents.md";
+  slug: "dropdown-menus-slide-out-sidebars-and-display-contents";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
@@ -290,6 +311,20 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
+"Running-TypeScript-in-Node-in-Datenow.md": {
+	id: "Running-TypeScript-in-Node-in-Datenow.md";
+  slug: "running-typescript-in-node-in-datenow";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
+"Setting-up-the-Vercel-Toolbar-for-frontend-Vite-projects.md": {
+	id: "Setting-up-the-Vercel-Toolbar-for-frontend-Vite-projects.md";
+  slug: "setting-up-the-vercel-toolbar-for-frontend-vite-projects";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
 "Tell-a-story-youre-a-part-of.md": {
 	id: "Tell-a-story-youre-a-part-of.md";
   slug: "tell-a-story-youre-a-part-of";
@@ -300,6 +335,13 @@ declare module 'astro:content' {
 "Theres-no-20-in-file-system-naming.md": {
 	id: "Theres-no-20-in-file-system-naming.md";
   slug: "theres-no-20-in-file-system-naming";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
+"VueConfUS-2025-Recap.md": {
+	id: "VueConfUS-2025-Recap.md";
+  slug: "vueconfus-2025-recap";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
