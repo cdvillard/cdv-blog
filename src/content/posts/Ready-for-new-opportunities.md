@@ -1,12 +1,12 @@
 ---
 title: Ready for new opportunities
 pubDate: 2025-11-17T22:15:16.365Z
+updatedDate: 2025-11-17T22:32:26.302Z
 description: >-
   Now that I'm available for full-time work, this is what I'm looking for in a
   role.
 featuredImage: >-
   https://assets.tina.io/ccae3147-013b-4061-9b12-b6b5c70dc307/bafkreibfvvc7qrvfbusgmzz2geee46w3fhu257hap2xp3hv7wcvgrf4k5a.jpg
-draft: false
 ---
 
 I'm currently on the market looking for a new full-time software engineering role! What follows is a bit about myself and what I'm looking for in my next position.
@@ -76,7 +76,7 @@ While the tenants of decentralization are appealing and I wouldn't mind explorin
 
 ## How you can get in touch with me
 
-If my [resume](https://charlesvillard.co/resume/CDVResume2025-Web.pdf) and what you've read here aligns with a position you're looking to fill, please feel free to reach out to me at ([c.d.villard@gmail.com](mailto:c.d.villard@gmail.com))\[mailto:[c.d.villard@gmail.com](mailto:c.d.villard@gmail.com)]. You can also learn more about me at:
+If my [resume](https://charlesvillard.co/resume/CDVResume2025-Web.pdf) and what you've read here aligns with a position you're looking to fill, please feel free to reach out to me at [c.d.villard@gmail.com](mailto:c.d.villard@gmail.com). You can also learn more about me at:
 
 * [https://www.linkedin.com/in/cdvillard](https://www.linkedin.com/in/cdvillard)
 * [https://bsky.app/profile/charlesvillard.co](https://bsky.app/profile/charlesvillard.co)
