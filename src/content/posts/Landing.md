@@ -1,9 +1,9 @@
 ---
 title: Landing
 pubDate: 2026-01-07T16:28:23.158Z
-updatedDate: 2026-01-07T16:45:54.475Z
+updatedDate: 2026-01-07T16:45:58.674Z
 description: 'New year, new starts'
-draft: true
+draft: false
 ---
 
 The end of 2025 was... well, it sucked. Getting laid off is never fun.
