@@ -1,8 +1,8 @@
 ---
 title: React Miami 2026 Write-up
 pubDate: 2026-06-12T02:33:19.552Z
-updatedDate: 2026-06-12T13:40:15.596Z
-description: Emptying my cup and learning about a ecosystem new to me
+updatedDate: 2026-06-12T13:44:16.065Z
+description: Emptying my cup and learning about an ecosystem new to me
 draft: false
 ---
 
