@@ -13,6 +13,11 @@ const publishedPosts = (await getCollection("posts")).sort(
 ---
 
 <Base>
+	<link
+		rel="site.standard.document"
+		href="at://did:plc:2q6huuhmkryerdbbtt6y3u7x/site.standard.publication/3mocgjdhdg62v"
+		slot="html-head"
+	/>
 	<div class="content">
 		<section aria-label="Blog post list">
 			{publishedPosts.length === 0 &&

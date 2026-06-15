@@ -1,6 +1,6 @@
 ---
-import Base from '../layouts/Base.astro';
-import Post from '../components/BlogPost.astro';
+import Base from "../layouts/Base.astro";
+import Post from "../components/BlogPost.astro";
 
 interface BlogContent {
 	description: string;
@@ -14,11 +14,19 @@ interface BlogContent {
 }
 export interface Props {
 	url: string;
-	content: BlogContent
+	content: BlogContent;
 }
 
 const {
-	content: { title, description, featuredImage, featuredImageAlt, pubDate, updatedDate, rssOnly},
+	content: {
+		title,
+		description,
+		featuredImage,
+		featuredImageAlt,
+		pubDate,
+		updatedDate,
+		rssOnly,
+	},
 	url,
 } = Astro.props;
 ---
