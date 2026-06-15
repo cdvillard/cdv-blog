@@ -19,7 +19,9 @@ const { props } = Astro;
       description={props.description}
       permalink={props.permalink}
       featuredimage={props.featuredimage}
-    />
+    >
+      <slot name="html-head" />
+    </BaseHead>
 
   <body>
     <Navigation arePostsPublished={ true } />
