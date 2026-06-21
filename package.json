@@ -2,6 +2,9 @@
   "name": "cdv-blog",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "tinacms dev -c 'astro dev'",
     "start": "tinacms dev -c 'astro dev'",
@@ -9,18 +12,20 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^2.3.1",
-    "@astrojs/preact": "^3.4.0",
-    "@astrojs/sitemap": "^3.1.5",
-    "@tinacms/cli": "^1.5.46",
+    "@astrojs/check": "^0.9.9",
+    "@astrojs/mdx": "^6.0.3",
+    "@astrojs/preact": "^5.1.5",
+    "@astrojs/sitemap": "^3.7.3",
+    "@tinacms/cli": "^2.5.1",
     "@types/node": "^20.14.2",
-    "astro": "^4.10.0",
+    "astro": "^6.4.8",
     "autoprefixer": "^10.4.19",
     "prettier": "^2.8.8",
-    "sass": "^1.77.4"
+    "sass": "^1.77.4",
+    "typescript": "^6.0.3"
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.6",
+    "@astrojs/rss": "^4.0.18",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/simple-icons": "^1.2.21",
     "astro-icon": "^1.1.5",
@@ -29,7 +34,7 @@
     "open-props": "^1.7.4",
     "preact": "^10.22.0",
     "sanitize-html": "^2.13.0",
-    "tinacms": "^1.6.4"
+    "tinacms": "^3.9.3"
   },
   "packageManager": "pnpm@9.7.1+sha512.faf344af2d6ca65c4c5c8c2224ea77a81a5e8859cbc4e06b1511ddce2f0151512431dd19e6aff31f2c6a8f5f2aced9bd2273e1fed7dd4de1868984059d2c4247"
 }

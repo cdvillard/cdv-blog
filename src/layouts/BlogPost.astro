@@ -17,6 +17,8 @@ export interface Props {
 	content: BlogContent
 }
 
+console.log(Astro.props);
+
 const {
 	content: { title, description, featuredImage, featuredImageAlt, pubDate, updatedDate, rssOnly},
 	url,

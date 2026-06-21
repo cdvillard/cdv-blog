@@ -5,7 +5,8 @@ export interface Props {
 }
 
 const { post } = Astro.props;
-const { slug, data } = post;
+const { id, data } = post;
+
 const { updatedDate, pubDate, title, description } = data;
 ---
 
@@ -13,9 +14,9 @@ const { updatedDate, pubDate, title, description } = data;
 	<small class="publish-date">
 		<p>{updatedDate ? "Updated" : "Posted"} <DateTime date={updatedDate || pubDate} /></p>
 	</small>
-		<h2 class="title"><a href={`/blog/${slug}`}>{title}</a></h2>
+		<h2 class="title"><a href={`/blog/${id}`}>{title}</a></h2>
 		<p>{description}</p>
 	<div>
-		<a href={`/blog/${slug}`}>Read more</a>
+		<a href={`/blog/${id}`}>Read more</a>
 	</div>
 </div>

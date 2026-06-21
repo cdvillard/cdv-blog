@@ -5,7 +5,9 @@ import Base from '../../layouts/Base.astro';
 
 let title = 'Blog';
 
-const publishedPosts = (await getCollection("posts")).sort(
+const posts = await getCollection("posts");
+
+const publishedPosts = posts.sort(
   (a, b) =>
     new Date(b.data.updatedDate || b.data.pubDate).valueOf() -
     new Date(a.data.updatedDate || a.data.pubDate).valueOf()
