@@ -4,6 +4,7 @@ pubDate: 2026-06-12T02:33:19.552Z
 updatedDate: 2026-06-12T13:44:16.065Z
 description: Emptying my cup and learning about an ecosystem new to me
 draft: false
+atDid: at://did:plc:2q6huuhmkryerdbbtt6y3u7x/site.standard.document/3moxpuxmitc2d
 ---
 
 The week of April 23rd and 24th, I attended [React Miami](https://www.reactmiami.com/) at the Hyatt Regency in Downtown Miami. Over the course of two days, I attended talks, networked, and learned more about the modern React ecosystem along with its various relationships to TypeScript, JavaScript, AI, product design, and more.

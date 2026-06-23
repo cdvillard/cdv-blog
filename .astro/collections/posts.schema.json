@@ -30,6 +30,9 @@
       "default": true,
       "type": "boolean"
     },
+    "atDid": {
+      "type": "string"
+    },
     "$schema": {
       "type": "string"
     }

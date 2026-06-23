@@ -1,6 +1,6 @@
 ---
-import Base from "../layouts/Base.astro";
-import Post from "../components/BlogPost.astro";
+import Base from '../layouts/Base.astro';
+import Post from '../components/BlogPost.astro';
 
 interface BlogContent {
 	description: string;
@@ -11,24 +11,15 @@ interface BlogContent {
 	updatedDate?: string;
 	rssOnly?: boolean;
 	draft?: boolean;
+	atDid?: string;
 }
 export interface Props {
 	url: string;
-	content: BlogContent;
+	content: BlogContent
 }
 
-console.log(Astro.props);
-
 const {
-	content: {
-		title,
-		description,
-		featuredImage,
-		featuredImageAlt,
-		pubDate,
-		updatedDate,
-		rssOnly,
-	},
+	content: { title, description, featuredImage, featuredImageAlt, pubDate, updatedDate, atDid},
 	url,
 } = Astro.props;
 ---
@@ -39,6 +30,13 @@ const {
 	permalink={`https://charlesvillard.co/blog/${url}`}
 	featuredimage={featuredImage}
 >
+	{atDid && (
+		<link
+			slot="html-head"
+			rel="site.standard.document"
+  		href={atDid}
+		/>
+	)}
 	<Post
 		title={title}
 		publishDate={pubDate}
