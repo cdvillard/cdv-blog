@@ -13,6 +13,7 @@ const postsCollection = defineCollection({
     featuredImageAlt: z.string().optional(),
     rssOnly: z.boolean().default(false),
     draft: z.boolean().default(true),
+    atDid: z.string().optional()
   }),
 });
 
